@@ -1,11 +1,12 @@
 using BlazingPizza.Data;
+using BlazingPizza.Services;
 namespace BlazingPizza;
 internal class Program
 {
     private static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-
+        builder.Services.AddScoped<OrderState>();
         builder.Services.AddRazorPages();
         builder.Services.AddServerSideBlazor();
         builder.Services.AddHttpClient();
@@ -17,7 +18,7 @@ internal class Program
         {
             app.UseExceptionHandler("/Error");
         }
-        
+
         app.UseStaticFiles();
         app.UseRouting();
 
